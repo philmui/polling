@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title>{% block title %}Polls{% endblock %}</title>
+</head>
+<body>
+<header>
+	<h1>{% block header %}Polls Main{% endblock %}</h1>
+</header>
+<div id="context">
+	{% block content %}{% endblock %}
+</div>
+<footer>
+	{% block footer %}
+	<hr>
+	<a href="{% url 'polls:index' %}">Home</a>
+	{% endblock %}</h1>
+</footer>
+</body>
+</html>

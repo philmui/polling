@@ -1,0 +1,18 @@
+{% extends "polls/base.html"%}
+
+{% load humanize %}
+{% block header %}Poll Question Detail{% endblock %}
+{% block content %}
+{% if question %}
+	<dl>id: {{ question.id }}</dl>
+	<dd>{{ question.text }}</dd>
+	<dd>{{ question.pub_date | naturaltime}}</dd>
+	<dd>choices: 
+		<ul>
+		{% for choice in question.choice_set.all %}
+		<li>{{ choice.text }}</li>
+		{% endfor %}
+		</ul>
+	</dd>
+{% endif %}
+{% endblock %}

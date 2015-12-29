@@ -1,0 +1,15 @@
+{% extends "polls/base.html"%}
+
+{% load humanize %}
+{% block header %}Home of the Polls{% endblock %}
+{% block content %}
+{% if latest_question_list %}
+	<ul>
+		{% for q in latest_question_list %}
+		<li><a href="{% url 'polls:detail' question_id=q.id %}">
+			{{ q.text }}</a>
+		    ({{ q.pub_date | naturaltime}})</li>
+		{% endfor %}
+	</ul>
+{% endif %}
+{% endblock %}
