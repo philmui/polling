@@ -11,5 +11,7 @@
 		    ({{ q.pub_date | naturaltime}})</li>
 		{% endfor %}
 	</ul>
+{% else %}
+	<strong>No polls are available.</strong>
 {% endif %}
 {% endblock %}

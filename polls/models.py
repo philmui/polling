@@ -9,11 +9,12 @@ class Question(models.Model):
 	pub_date  = models.DateTimeField('date published')
 
 	def was_published_recently(self):
-	    return self.pub_date >= \
-	        timezone.now() - datetime.timedelta(days=1)
+	    now = timezone.now()
+	    return now >= self.pub_date >= \
+	        now - datetime.timedelta(days=1)
 	
 	def __str__(self):
-		return "%d: %s" % (self.id, self.text)
+		return "%s" % (self.text,)
 
 class Choice(models.Model):
 	question   = models.ForeignKey(Question,
@@ -22,4 +23,4 @@ class Choice(models.Model):
 	vote_tally = models.IntegerField(default=0)
 
 	def __str__(self):
-		return "%s (%d)" % (self.text, self.vote_tally)
+		return "%s" % (self.text,)

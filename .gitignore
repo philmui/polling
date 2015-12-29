@@ -5,6 +5,10 @@
 db.sqlite3
 .DS_Store
 
+# Coverage stuff
+htmlcov/
+.coverage
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
