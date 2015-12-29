@@ -6,7 +6,7 @@
 {% if latest_question_list %}
 	<ul>
 		{% for q in latest_question_list %}
-		<li><a href="{% url 'polls:detail' question_id=q.id %}">
+		<li><a href="{% url 'polls:detail' pk=q.id %}">
 			{{ q.text }}</a>
 		    ({{ q.pub_date | naturaltime}})</li>
 		{% endfor %}
