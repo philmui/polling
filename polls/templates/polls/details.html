@@ -7,12 +7,23 @@
 	<dl>id: {{ question.id }}</dl>
 	<dd>{{ question.text }}</dd>
 	<dd>{{ question.pub_date | naturaltime}}</dd>
-	<dd>choices: 
+	<dd> 
 		<ul>
-		{% for choice in question.choice_set.all %}
-		<li>{{ choice.text }}</li>
-		{% endfor %}
+		<form action="{% url 'polls:vote' question.id %}" 
+		      method="post">
+			{% for choice in question.choice_set.all %}
+			<input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}"/>
+			<label for="">{{ choice.text }}</label>
+			{% endfor %}
+			<input type="submit" value="Vote"/>
+			{% csrf_token %}
+		</form>
 		</ul>
 	</dd>
 {% endif %}
+
+{% if error_message %}
+	<p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
 {% endblock %}

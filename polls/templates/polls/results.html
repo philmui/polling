@@ -1,0 +1,14 @@
+{% extends "polls/base.html"%}
+
+{% load humanize %}
+{% block header %}Poll Result Page{% endblock %}
+{% block content %}
+<h1>{{ question.text}}</h1>
+<ul>
+{% for choice in question.choice_set.all %}
+	<li>{{ choice.text }}: {{ choice.vote_tally }}  
+		vote{{ choice.vote_tally | pluralize}}</li>
+{% endfor %}
+</ul>
+<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+{% endblock %}
